@@ -3,6 +3,7 @@ package com.saima.expense.mapper;
 import com.saima.expense.dto.CategoryDto;
 import com.saima.expense.entity.Category;
 
+
 public class CategoryMapper {
 
     //Map Dto to Entity
@@ -13,6 +14,7 @@ public class CategoryMapper {
         );
     }
 
+    //Map Entity to Dto
     public static CategoryDto mapToCategoryDto(Category category) {
         return new CategoryDto(
                 category.getId(),
