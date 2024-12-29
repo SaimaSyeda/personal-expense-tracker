@@ -1,5 +1,6 @@
 package com.saima.expense.mapper;
 
+import com.saima.expense.dto.CategoryDto;
 import com.saima.expense.dto.ExpenseDto;
 import com.saima.expense.entity.Category;
 import com.saima.expense.entity.Expense;
@@ -11,13 +12,16 @@ public class ExpenseMapper {
                 expense.getId(),
                 expense.getAmount(),
                 expense.getExpenseDate(),
-                expense.getCategory()
+                new CategoryDto(
+                        expense.getCategory().getId(),
+                        expense.getCategory().getName()
+                )
         );
     }
 
     public static Expense mapToExpense(ExpenseDto expenseDto) {
         Category category = new Category();
-        category.setId(expenseDto.id());
+        category.setId(expenseDto.categoryDto().id());
 
         return new Expense(
                 expenseDto.id(),

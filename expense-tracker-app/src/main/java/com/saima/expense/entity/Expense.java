@@ -18,15 +18,15 @@ import java.time.LocalDate;
 public class Expense {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    private Long id;
 
     @Column(nullable = false)
-    BigDecimal amount;
+    private BigDecimal amount;
 
     @Column(nullable = false)
-    LocalDate expenseDate;
+    private LocalDate expenseDate;
 
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
-    Category category;
+    private Category category;
 }
