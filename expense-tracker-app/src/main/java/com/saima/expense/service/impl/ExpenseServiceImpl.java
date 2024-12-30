@@ -3,6 +3,7 @@ package com.saima.expense.service.impl;
 import com.saima.expense.dto.ExpenseDto;
 import com.saima.expense.entity.Category;
 import com.saima.expense.entity.Expense;
+import com.saima.expense.exceptions.ResourceNotFoundException;
 import com.saima.expense.mapper.ExpenseMapper;
 import com.saima.expense.repository.CategoryRepository;
 import com.saima.expense.repository.ExpensesRepository;
@@ -32,7 +33,7 @@ public class ExpenseServiceImpl implements ExpenseService {
     @Override
     public ExpenseDto getExpenseById(Long expenseId) {
         Expense expense = expensesRepository.findById(expenseId)
-                .orElseThrow(() -> new RuntimeException("Expense not found with id: " + expenseId));
+                .orElseThrow(() -> new ResourceNotFoundException("Expense not found with id: " + expenseId));
 
         return ExpenseMapper.mapToExpenseDto(expense);
     }
@@ -49,14 +50,14 @@ public class ExpenseServiceImpl implements ExpenseService {
     @Override
     public ExpenseDto updateExpense(Long expenseId, ExpenseDto expenseDto) {
         Expense expense = expensesRepository.findById(expenseId)
-                .orElseThrow(() -> new RuntimeException("Expense not found with id: " + expenseId));
+                .orElseThrow(() -> new ResourceNotFoundException("Expense not found with id: " + expenseId));
 
         expense.setAmount(expenseDto.amount());
         expense.setExpenseDate(expenseDto.expenseDate());
 
         if(expenseDto.categoryDto() != null) {
             Category category = categoryRepository.findById(expenseDto.categoryDto().id())
-                    .orElseThrow(() -> new RuntimeException("Category not found with id: " +
+                    .orElseThrow(() -> new ResourceNotFoundException("Category not found with id: " +
                             expenseDto.categoryDto().id()));
 
             expense.setCategory(category);
@@ -70,7 +71,7 @@ public class ExpenseServiceImpl implements ExpenseService {
     @Override
     public void deleteExpense(Long expenseId) {
         Expense expense = expensesRepository.findById(expenseId)
-                .orElseThrow(() -> new RuntimeException("Expense not found with id: " + expenseId));
+                .orElseThrow(() -> new ResourceNotFoundException("Expense not found with id: " + expenseId));
 
         expensesRepository.delete(expense);
     }

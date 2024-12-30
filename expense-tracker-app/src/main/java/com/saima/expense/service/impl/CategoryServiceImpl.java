@@ -2,6 +2,7 @@ package com.saima.expense.service.impl;
 
 import com.saima.expense.dto.CategoryDto;
 import com.saima.expense.entity.Category;
+import com.saima.expense.exceptions.ResourceNotFoundException;
 import com.saima.expense.mapper.CategoryMapper;
 import com.saima.expense.repository.CategoryRepository;
 import com.saima.expense.service.CategoryService;
@@ -33,7 +34,7 @@ public class CategoryServiceImpl implements CategoryService {
     public CategoryDto getCategoryById(Long categoryId) {
 
         Category category = categoryRepository.findById(categoryId)
-                .orElseThrow(() -> new RuntimeException("Category not found with id: " + categoryId));
+                .orElseThrow(() -> new ResourceNotFoundException("Category not found with id: " + categoryId));
         return CategoryMapper.mapToCategoryDto(category);
     }
 
@@ -49,7 +50,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public CategoryDto updateCategory(Long categoryId, CategoryDto categoryDto) {
         Category category = categoryRepository.findById(categoryId)
-                .orElseThrow(() -> new RuntimeException("Category not found with id: " + categoryId));
+                .orElseThrow(() -> new ResourceNotFoundException("Category not found with id: " + categoryId));
 
         category.setName(categoryDto.name());
 
@@ -61,7 +62,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public void deleteCategory(Long categoryId) {
         Category category = categoryRepository.findById(categoryId)
-                .orElseThrow(() -> new RuntimeException("Category not found with id: " + categoryId));
+                .orElseThrow(() -> new ResourceNotFoundException("Category not found with id: " + categoryId));
 
         categoryRepository.delete(category);
     }
