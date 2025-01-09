@@ -2,19 +2,16 @@
 
 This application provides a comprehensive solution for managing personal finances by tracking expenses across various categories. In this project, we build REST APIs, handle exceptions, generate REST API documentation, and more.
 
----
 
 ## 🚀 **Project Overview**
 The Expense Tracker Application is designed to help users efficiently manage their finances. Users can record expenses, categorize them, and view reports to better understand their spending habits.
 
----
 
 ## 🎯 **Project Objectives**
 - Build and expose RESTful APIs for expense tracking.
 - Implement exception handling for robust error management.
 - Generate comprehensive REST API documentation using tools like Swagger.
 
----
 
 ## 🛠️ **Tech Stack**
 - **Backend:** Spring Boot (Java)
@@ -23,7 +20,6 @@ The Expense Tracker Application is designed to help users efficiently manage the
 - **API Documentation:** Swagger / OpenAPI
 - **Security:** JWT Authentication
 
----
 
 ## 📋 **Features**
 - Add, update, and delete expenses.
@@ -31,7 +27,6 @@ The Expense Tracker Application is designed to help users efficiently manage the
 - View detailed expense reports by date and category.
 - Search expenses.
 
----
 
 ## 🧑‍💻 **Getting Started**
 ### Prerequisites
@@ -61,7 +56,6 @@ The Expense Tracker Application is designed to help users efficiently manage the
    http://localhost:8080/swagger-ui.html
    ```
 
----
 
 ## 🧪 **API Endpoints**
 | Method | Endpoint               | Description                 |
@@ -77,7 +71,6 @@ The Expense Tracker Application is designed to help users efficiently manage the
 | PUT    | /api/expenses/{id}     | Update an existing expense  |
 | DELETE | /api/expenses/{id}     | Delete an expense           |
 
----
 
 ## 📂 **Project Structure**
 ```
